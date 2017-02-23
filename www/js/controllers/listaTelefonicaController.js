@@ -1,27 +1,7 @@
 app.controller('listaTelefonicaCtrl', function($scope, crudService) {
     $scope.lista = 'Lista Telefonica';
     $scope.contatos = [];
-    $scope.providers = [{
-        name: 'Oi',
-        code: 14,
-        category: 'Celular'
-    }, {
-        name: 'Vivo',
-        code: 15,
-        category: 'Celular'
-    }, {
-        name: 'Tim',
-        code: 41,
-        category: 'Celular'
-    }, {
-        name: 'GVT',
-        code: 25,
-        category: 'Fixo'
-    }, {
-        name: 'Embratel',
-        code: 21,
-        category: 'Fixo'
-    }];
+    $scope.providers = [];
 
     $scope.direcaoDaOrdenacao = false;
 
@@ -30,6 +10,17 @@ app.controller('listaTelefonicaCtrl', function($scope, crudService) {
             .then(
                 function successCallback(data) {
                     $scope.contatos = data;
+                },
+                function errorCallback(reason) {
+                    $scope.error = 'Não foi possível carregar os dados!';
+                });
+    };
+
+    var carregarOperadoras = function() {
+        crudService.getProviders()
+            .then(
+                function successCallback(data) {
+                    $scope.providers = data;
                 },
                 function errorCallback(reason) {
                     $scope.error = 'Não foi possível carregar os dados!';
@@ -85,4 +76,5 @@ app.controller('listaTelefonicaCtrl', function($scope, crudService) {
     };
 
     carregarContatos();
+    carregarOperadoras();
 });
