@@ -19,7 +19,6 @@ app.service('crudService', function($http, $q) {
         $http.get(baseUrl + '/providers')
             .then(
                 function successCallback(data) {
-                    console.log(data.data);
                     deferred.resolve(data.data);
                 },
                 function errorCallback(reason) {
