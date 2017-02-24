@@ -7,6 +7,7 @@
     <meta name="viewport " content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" type="" href="./css/lista-telefonica.css">
+    <link rel="stylesheet" type="" href="./css/uiAlert.css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-messages/1.6.2/angular-messages.js"></script>
     <!--Script angular inline-->
@@ -21,17 +22,9 @@
 <body>
     <div class="jumbotron" ng-controller="listaTelefonicaCtrl">
         <h3>{{lista}}</h3>
-        <!--<div ui-alert>
-
-        </div>
-        <div class="ui-alert">
-            <div class="ui-alert-title">
-                Ops, aconteceu um problema!
-            </div>
-            <div class="ui-alert-message">
-                {{error}}
-            </div>
-        </div>-->
+        <ui-alert title="Ops, aconteceu um problema!">
+            Não foi possível carregar
+        </ui-alert>
         <input type="text" class="form-control" ng-model="criterioDeBusca" placeholder="Quem você procura?">
         <table class="table table-striped">
             <tr>

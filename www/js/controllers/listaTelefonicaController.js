@@ -9,6 +9,7 @@ app.controller('listaTelefonicaCtrl', function($scope, crudService) {
         crudService.getContacts()
             .then(
                 function successCallback(data) {
+                    delete $scope.error;
                     $scope.contatos = data;
                 },
                 function errorCallback(reason) {
@@ -20,6 +21,7 @@ app.controller('listaTelefonicaCtrl', function($scope, crudService) {
         crudService.getProviders()
             .then(
                 function successCallback(data) {
+                    delete $scope.error;
                     $scope.providers = data;
                 },
                 function errorCallback(reason) {
@@ -64,11 +66,11 @@ app.controller('listaTelefonicaCtrl', function($scope, crudService) {
         }
     };
 
-    $scope.isContatoSelecionado = function(contatos) {
-        return contatos.some(function(contato) {
-            return contato.selecionado;
-        });
-    };
+    // $scope.isContatoSelecionado = function(contatos) {
+    //     return contatos.some(function(contato) {
+    //         return contato.selecionado;
+    //     });
+    // };
 
     $scope.ordenarPor = function(campo) {
         $scope.direcaoDaOrdenacao = !$scope.direcaoDaOrdenacao;
